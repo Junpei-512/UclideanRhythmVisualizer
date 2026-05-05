@@ -13,71 +13,71 @@ const SCALES = {
 };
 
 const SCALE_NAMES = {
-  penta: 'ペンタトニック', major: 'メジャー', minor: 'マイナー',
+  penta: 'ペンタ', major: 'メジャー', minor: 'マイナー',
   harmonic_minor: '和声短音階', dorian: 'ドリアン', phrygian: 'フリジアン',
-  blues: 'ブルース', ryukyu: '琉球音階', hirajoshi: '平調子',
+  blues: 'ブルース', ryukyu: '琉球', hirajoshi: '平調子',
 };
 
 const SCALE_INFO = {
   penta: {
     en: 'Pentatonic Scale',
     degrees: '1  ♭3  4  5  ♭7',
-    desc: '5音からなる最もシンプルなスケール。半音を含まないため不協和が生まれにくく、どんな和音にも合わせやすい。世界中の民族音楽で独立に発見されており、ロック・ブルース・日本の童謡にも広く使われる。',
-    tags: ['ポップス', 'ロック', 'ブルース', '民族音楽', '初心者向け'],
+    desc: '5音構成。半音なしで不協和が生まれにくく、あらゆるジャンルに馴染む世界共通のスケール。',
+    tags: ['ポップス', 'ロック', '民族音楽', '初心者向け'],
   },
   major: {
     en: 'Major Scale (Ionian)',
     degrees: '1  2  3  4  5  6  7',
-    desc: '西洋音楽の基盤となる7音スケール。明るく安定した響きを持ち、ハ長調（C major）はすべての白鍵で構成される。長3度と完全5度が明快な明るさを生み出す。',
+    desc: '西洋音楽の基盤。明るく安定した響きを持ち、ハ長調はすべての白鍵で構成される。',
     tags: ['クラシック', 'ポップス', '明るい', '安定'],
   },
   minor: {
     en: 'Natural Minor Scale (Aeolian)',
     degrees: '1  2  ♭3  4  5  ♭6  ♭7',
-    desc: '長調に対応する短調スケール。第3・6・7音が半音低いことで暗く哀愁のある響きになる。メジャースケールの第6音から始めたものと同じ音列（平行短調）。',
+    desc: '長調の平行短調。第3・6・7音が低く、暗く哀愁のある響きになる。',
     tags: ['ロック', 'クラシック', '哀愁', '暗い'],
   },
   harmonic_minor: {
     en: 'Harmonic Minor Scale',
     degrees: '1  2  ♭3  4  5  ♭6  7',
-    desc: 'マイナースケールの第7音を半音上げたスケール。第6音と第7音の間に増2度（3半音）という特徴的な跳躍が生まれ、エキゾチックで劇的な響きになる。V7→iという強い解決感を持つドミナント和音を作れるのが最大の特徴。フラメンコ・東欧・中東音楽に多用される。',
-    tags: ['フラメンコ', '東欧', '中東', 'ドラマティック', '劇的'],
+    desc: 'マイナースケールの第7音を半音上げたスケール。増2度が生む独特の跳躍がエキゾチックで劇的な響きを作る。強い解決感のV7→iが特徴。',
+    tags: ['フラメンコ', '東欧', '中東', 'ドラマティック'],
   },
   dorian: {
     en: 'Dorian Mode',
     degrees: '1  2  ♭3  4  5  6  ♭7',
-    desc: 'マイナースケールの第6音を半音上げた教会旋法。マイナーの暗さを持ちつつ長6度の明るさが共存するため「明るいマイナー」と呼ばれる。ジャズのii-V-I進行やファンク・ロックで頻繁に使われる。',
+    desc: 'マイナーの第6音を半音上げた教会旋法。「明るいマイナー」と呼ばれ、ジャズのii-V-I進行に頻出。',
     tags: ['ジャズ', 'ファンク', 'ロック', '明るいマイナー'],
   },
   phrygian: {
     en: 'Phrygian Mode',
     degrees: '1  ♭2  ♭3  4  5  ♭6  ♭7',
-    desc: '第2音が半音低い教会旋法。冒頭の半音下降が強烈な緊張感とエキゾチズムを生む。スペイン・フラメンコの代名詞的なスケールで、メタル音楽にも多用される。',
-    tags: ['フラメンコ', 'スペイン', 'メタル', '緊張感', 'エキゾチック'],
+    desc: '第2音が半音低い教会旋法。冒頭の半音下降が強烈な緊張感とエキゾチズムを生む。フラメンコ・メタルの定番。',
+    tags: ['フラメンコ', 'スペイン', 'メタル', '緊張感'],
   },
   blues: {
     en: 'Blues Scale',
     degrees: '1  ♭3  4  ♭5  5  ♭7',
-    desc: 'ペンタトニックマイナーに♭5（ブルーノート）を加えた6音スケール。このフラットファイブが独特のグルーヴと泥臭さを生み出す。ブルース・ジャズ・R&Bの核心をなすスケール。',
-    tags: ['ブルース', 'ジャズ', 'R&B', 'グルーヴ', 'ブルーノート'],
+    desc: 'ペンタトニックマイナーに♭5（ブルーノート）を加えた6音スケール。独特のグルーヴと泥臭さが生まれる。',
+    tags: ['ブルース', 'ジャズ', 'R&B', 'グルーヴ'],
   },
   ryukyu: {
     en: 'Ryukyu Scale',
     degrees: '1  3  4  5  7',
-    desc: '沖縄・琉球音楽に特有の5音音階。第3音と第7音が長音（半音高い）なのが特徴で、明るく南国的な響きを持つ。三線（さんしん）の代表的なスケールで、本州の民謡とは明らかに異なる独自の音世界を作る。',
-    tags: ['沖縄', '琉球', '三線', '民族音楽', '南国'],
+    desc: '沖縄・琉球音楽固有の5音音階。長3度・長7度が南国的で明るい独自の響きを作る。三線の代表的スケール。',
+    tags: ['沖縄', '琉球', '三線', '南国'],
   },
   hirajoshi: {
     en: 'Hirajoshi Scale',
     degrees: '1  2  ♭3  5  ♭6',
-    desc: '日本の箏（こと）の代表的な調弦から生まれた5音音階。長2度・短3度・短2度という独特の音程配置が、静寂・侘び・幽玄の響きを作り出す。ジャズピアニストにも好まれる異国的なスケール。',
-    tags: ['箏', '琴', '和風', '侘び・さび', '瞑想的'],
+    desc: '日本の箏の調弦から生まれた5音音階。長2度・短3度・短2度の独特な配置が静寂・侘び・幽玄を生む。',
+    tags: ['箏', '和風', '侘び・さび', '瞑想的'],
   },
 };
 
 const MV_DESC = {
-  ascend:   'スケールを1音ずつ上昇し、1オクターブ上で折り返して下降する',
-  descend:  'スケールを1音ずつ下降し、1オクターブ下で折り返して上昇する',
+  ascend:   'スケールを1音ずつ上昇し、1オクターブ上で折り返す',
+  descend:  'スケールを1音ずつ下降し、1オクターブ下で折り返す',
   pendulum: '最低音と最高音の間をsin波的になめらかに往復する',
   arch:     'スケール中央から低・高方向へ交互に広がる',
   stepwise: '4度以内の狭い音域を隣接音へじわじわ動く',
@@ -86,21 +86,26 @@ const MV_DESC = {
 };
 
 const PRESETS = [
-  { l: 'ボサノバ',     n: 3, m: 8,  r: 0, sc: 'penta',          t: 'guitar',     mv: 'pendulum', bpm: 90  },
-  { l: 'キューバ',     n: 5, m: 8,  r: 0, sc: 'blues',           t: 'piano',      mv: 'ascend',   bpm: 110 },
-  { l: '琉球',         n: 4, m: 8,  r: 1, sc: 'ryukyu',          t: 'koto',       mv: 'arch',     bpm: 96  },
-  { l: '平調子',       n: 5, m: 12, r: 2, sc: 'hirajoshi',       t: 'koto',       mv: 'descend',  bpm: 80  },
-  { l: 'フュージョン', n: 7, m: 16, r: 0, sc: 'dorian',          t: 'vibraphone', mv: 'pendulum', bpm: 130 },
-  { l: 'フラメンコ',   n: 5, m: 12, r: 4, sc: 'phrygian',        t: 'guitar',     mv: 'arch',     bpm: 118 },
-  { l: 'ジャズ',       n: 5, m: 8,  r: 2, sc: 'dorian',          t: 'vibraphone', mv: 'random',   bpm: 140 },
-  { l: '和声短調',     n: 5, m: 8,  r: 0, sc: 'harmonic_minor',  t: 'piano',      mv: 'descend',  bpm: 100 },
+  { l:'ボサノバ',   dn:3, dm:8,  dr:0, mn:5, mm:12, mr:1, sc:'penta',         t:'guitar',     mv:'pendulum', bpm:90  },
+  { l:'キューバ',   dn:5, dm:8,  dr:0, mn:3, mm:8,  mr:2, sc:'blues',         t:'piano',      mv:'ascend',   bpm:110 },
+  { l:'琉球',       dn:4, dm:8,  dr:1, mn:5, mm:12, mr:0, sc:'ryukyu',        t:'koto',       mv:'arch',     bpm:96  },
+  { l:'平調子',     dn:5, dm:12, dr:2, mn:3, mm:8,  mr:3, sc:'hirajoshi',     t:'koto',       mv:'descend',  bpm:80  },
+  { l:'ポリリズム', dn:3, dm:8,  dr:0, mn:4, mm:9,  mr:0, sc:'dorian',        t:'vibraphone', mv:'random',   bpm:120 },
+  { l:'フラメンコ', dn:5, dm:12, dr:4, mn:7, mm:16, mr:2, sc:'phrygian',      t:'guitar',     mv:'arch',     bpm:118 },
+  { l:'ジャズ',     dn:5, dm:8,  dr:0, mn:7, mm:16, mr:3, sc:'dorian',        t:'vibraphone', mv:'pendulum', bpm:140 },
+  { l:'和声短調',   dn:5, dm:8,  dr:0, mn:3, mm:8,  mr:5, sc:'harmonic_minor',t:'piano',      mv:'descend',  bpm:100 },
 ];
 
 // ── 状態 ────────────────────────────────────────────────────
 
 let actx = null, reverbNode = null;
 let isPlaying = false, curStep = -1, timer = null, bpm = 110;
-let drumPat = [], melody = [];
+let drumPat = [], melPat = [], melody = [], lcmLen = 8;
+
+// ── 数学ユーティリティ ───────────────────────────────────────
+
+function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+function lcm(a, b) { return a / gcd(a, b) * b; }
 
 // ── オーディオ初期化 ─────────────────────────────────────────
 
@@ -132,7 +137,7 @@ function mkGain(val) {
   return g;
 }
 
-function connectWithReverb(node, dry, wet) {
+function conn(node, dry, wet) {
   const dg = mkGain(dry), wg = mkGain(wet);
   node.connect(dg); dg.connect(actx.destination);
   node.connect(wg); wg.connect(reverbNode);
@@ -257,8 +262,8 @@ function synthPiano(freq, t, dur, rev) {
     const o = ctx.createOscillator(), g = ctx.createGain();
     o.type = 'sine';
     o.frequency.value = freq * h * (1 + h * h * 0.00003 + h * 0.00008);
-    const a  = [1, 0.55, 0.28, 0.14, 0.08, 0.05, 0.03, 0.015, 0.008, 0.004][hi] * 0.22;
-    const dc = [2.0, 1.5, 1.2, 0.9, 0.7, 0.55, 0.4, 0.3, 0.25, 0.2][hi];
+    const a  = [1,0.55,0.28,0.14,0.08,0.05,0.03,0.015,0.008,0.004][hi] * 0.22;
+    const dc = [2.0,1.5,1.2,0.9,0.7,0.55,0.4,0.3,0.25,0.2][hi];
     g.gain.setValueAtTime(0, t);
     g.gain.linearRampToValueAtTime(a, t + 0.005);
     g.gain.exponentialRampToValueAtTime(0.0001, t + dc);
@@ -272,7 +277,7 @@ function synthPiano(freq, t, dur, rev) {
   ns.buffer = nb; nf.type = 'bandpass'; nf.frequency.value = freq * 3; nf.Q.value = 1.5;
   ng.gain.setValueAtTime(0.04, t); ng.gain.exponentialRampToValueAtTime(0.0001, t + 0.04);
   ns.connect(nf); nf.connect(ng); ng.connect(master); ns.start(t);
-  connectWithReverb(master, 1 - rev, rev);
+  conn(master, 1 - rev, rev);
 }
 
 function synthMarimba(freq, t, dur, rev) {
@@ -285,7 +290,7 @@ function synthMarimba(freq, t, dur, rev) {
     g.gain.setValueAtTime(a, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dc);
     o.connect(g); g.connect(master); o.start(t); o.stop(t + dc + 0.05);
   });
-  connectWithReverb(master, 1 - rev, rev);
+  conn(master, 1 - rev, rev);
 }
 
 function synthGuitar(freq, t, dur, rev) {
@@ -307,7 +312,7 @@ function synthGuitar(freq, t, dur, rev) {
   click.frequency.value = freq * 8; click.type = 'sine';
   cg.gain.setValueAtTime(0.06, t); cg.gain.exponentialRampToValueAtTime(0.0001, t + 0.015);
   click.connect(cg); cg.connect(master); click.start(t); click.stop(t + 0.02);
-  connectWithReverb(master, 1 - rev, rev);
+  conn(master, 1 - rev, rev);
 }
 
 function synthBass(freq, t, dur, rev) {
@@ -321,7 +326,7 @@ function synthBass(freq, t, dur, rev) {
     g.gain.exponentialRampToValueAtTime(0.001, t + Math.min(dur, 1.0));
     o.connect(g); g.connect(master); o.start(t); o.stop(t + dur + 0.05);
   });
-  connectWithReverb(master, 1 - rev, rev);
+  conn(master, 1 - rev, rev);
 }
 
 function synthVibraphone(freq, t, dur, rev) {
@@ -337,7 +342,7 @@ function synthVibraphone(freq, t, dur, rev) {
     g.gain.setValueAtTime(a, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dc);
     o.connect(g); g.connect(master); o.start(t); o.stop(t + dc + 0.1);
   });
-  connectWithReverb(master, 1 - rev, rev);
+  conn(master, 1 - rev, rev);
 }
 
 function synthKoto(freq, t, dur, rev) {
@@ -358,7 +363,7 @@ function synthKoto(freq, t, dur, rev) {
   click.frequency.value = freq * 5; click.type = 'sine';
   cg.gain.setValueAtTime(0.08, t); cg.gain.exponentialRampToValueAtTime(0.0001, t + 0.02);
   click.connect(cg); cg.connect(master); click.start(t); click.stop(t + 0.025);
-  connectWithReverb(master, 1 - rev, rev);
+  conn(master, 1 - rev, rev);
 }
 
 function synthDrum(t) {
@@ -396,14 +401,13 @@ function renderScaleInfo(sc) {
   const info = SCALE_INFO[sc];
   if (!info) return;
   const scale = SCALES[sc];
-  const semitoneStr = scale.join(' – ');
+  const semStr = scale.join(' – ');
   document.getElementById('scale-info').innerHTML = `
     <div class="scale-info-header">
       <span class="scale-info-name">${SCALE_NAMES[sc]}</span>
       <span class="scale-info-en">${info.en}</span>
     </div>
-    <div class="scale-info-intervals">音程（半音）：${semitoneStr}</div>
-    <div class="scale-info-intervals">音度：${info.degrees}</div>
+    <div class="scale-info-intervals">半音：${semStr}　音度：${info.degrees}</div>
     <div class="scale-info-desc">${info.desc}</div>
     <div class="scale-tags">
       ${info.tags.map(tag => `<span class="scale-tag">${tag}</span>`).join('')}
@@ -413,10 +417,13 @@ function renderScaleInfo(sc) {
 
 function renderSeq() {
   const area = document.getElementById('seq-area');
-  const dr = drumPat.map((v, i) =>
+  const drExp = Array.from({ length: lcmLen }, (_, i) => drumPat[i % drumPat.length]);
+  const mlExp = Array.from({ length: lcmLen }, (_, i) => melPat[i % melPat.length]);
+
+  const dr = drExp.map((v, i) =>
     `<div class="drum-cell${v ? ' on' : ''}${i === curStep ? ' cur' : ''}" id="dr-${i}"></div>`
   ).join('');
-  const ml = melody.map((v, i) =>
+  const ml = mlExp.map((v, i) =>
     `<div class="note-cell${v ? ' on' : ''}${i === curStep ? ' cur' : ''}" id="ml-${i}"></div>`
   ).join('');
   area.innerHTML = `
@@ -427,105 +434,121 @@ function renderSeq() {
 
 function drawViz() {
   const canvas = document.getElementById('cv');
-  const W = canvas.clientWidth * devicePixelRatio || 640;
-  const H = 190;
+  const W = 640, H = 200;
   canvas.width = W; canvas.height = H;
-  const cx = W / 2, cy = H / 2, R = H * 0.41;
   const ctx = canvas.getContext('2d');
   const dark = matchMedia('(prefers-color-scheme:dark)').matches;
 
   ctx.fillStyle = dark ? '#1e1e1c' : '#f5f4f0';
   ctx.fillRect(0, 0, W, H);
 
-  ctx.strokeStyle = dark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
-  ctx.lineWidth = 0.5;
-  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
-  ctx.beginPath(); ctx.arc(cx, cy, R * 0.55, 0, Math.PI * 2); ctx.stroke();
+  const dn = document.getElementById('dn').value;
+  const dm = document.getElementById('dm').value;
+  const mn = document.getElementById('mn').value;
+  const mm = document.getElementById('mm').value;
 
-  const m = drumPat.length;
-  const onIdxs = drumPat.map((v, i) => v ? i : -1).filter(i => i >= 0);
-
-  ctx.strokeStyle = dark ? 'rgba(29,158,117,0.18)' : 'rgba(29,158,117,0.15)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < onIdxs.length; i++) {
-    const a1 = (onIdxs[i] / m) * Math.PI * 2 - Math.PI / 2;
-    const a2 = (onIdxs[(i + 1) % onIdxs.length] / m) * Math.PI * 2 - Math.PI / 2;
-    ctx.beginPath();
-    ctx.moveTo(cx + R * Math.cos(a1), cy + R * Math.sin(a1));
-    ctx.lineTo(cx + R * Math.cos(a2), cy + R * Math.sin(a2));
-    ctx.stroke();
-  }
+  const configs = [
+    { pat: drumPat, cx: W * 0.27, cy: H / 2, R: 76, color: '#1D9E75', curColor: '#185FA5', label: `ドラム  E(${dn},${dm})` },
+    { pat: melPat,  cx: W * 0.73, cy: H / 2, R: 76, color: '#7F77DD', curColor: '#185FA5', label: `メロディ E(${mn},${mm})` },
+  ];
 
   const fs = melody.filter(f => f);
   const fMin = fs.length ? Math.min(...fs) : 200;
   const fMax = fs.length ? Math.max(...fs) : 900;
   const logMin = Math.log2(fMin + 1), logMax = Math.log2(fMax + 1);
 
-  drumPat.forEach((v, i) => {
-    const angle = (i / m) * Math.PI * 2 - Math.PI / 2;
-    const isCur = i === curStep;
-    if (v && melody[i]) {
-      const t2 = logMax > logMin ? (Math.log2(melody[i] + 1) - logMin) / (logMax - logMin) : 0.5;
-      const rr = R * 0.55 + t2 * (R - R * 0.55);
-      ctx.beginPath(); ctx.arc(cx + rr * Math.cos(angle), cy + rr * Math.sin(angle), isCur ? 12 : 9, 0, Math.PI * 2);
-      ctx.fillStyle = isCur ? '#185FA5' : '#7F77DD'; ctx.fill();
-    } else if (v) {
-      ctx.beginPath(); ctx.arc(cx + R * Math.cos(angle), cy + R * Math.sin(angle), isCur ? 12 : 9, 0, Math.PI * 2);
-      ctx.fillStyle = isCur ? '#185FA5' : '#1D9E75'; ctx.fill();
-    } else {
-      ctx.beginPath(); ctx.arc(cx + R * Math.cos(angle), cy + R * Math.sin(angle), 5, 0, Math.PI * 2);
-      ctx.fillStyle = dark ? '#2c2c2a' : '#e0ddd6'; ctx.fill();
-    }
-    if (m <= 16) {
-      ctx.fillStyle = dark ? 'rgba(255,255,255,0.28)' : 'rgba(0,0,0,0.22)';
-      ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(i + 1, cx + (R + 16) * Math.cos(angle), cy + (R + 16) * Math.sin(angle));
-    }
-  });
+  configs.forEach(({ pat, cx, cy, R, color, curColor, label }, ci) => {
+    const m = pat.length;
 
-  if (fs.length > 1) {
-    ctx.strokeStyle = dark ? 'rgba(127,119,221,0.3)' : 'rgba(127,119,221,0.25)';
-    ctx.lineWidth = 1; ctx.beginPath(); let started = false;
-    melody.forEach((f, i) => {
-      if (!f) return;
-      const t2 = logMax > logMin ? (Math.log2(f + 1) - logMin) / (logMax - logMin) : 0.5;
-      const rr = R * 0.55 + t2 * (R - R * 0.55);
+    ctx.strokeStyle = dark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+    if (ci === 1) {
+      ctx.beginPath(); ctx.arc(cx, cy, R * 0.55, 0, Math.PI * 2); ctx.stroke();
+    }
+
+    const onIdxs = pat.map((v, i) => v ? i : -1).filter(i => i >= 0);
+    ctx.strokeStyle = ci === 0 ? 'rgba(29,158,117,0.2)' : 'rgba(127,119,221,0.2)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < onIdxs.length; i++) {
+      const a1 = (onIdxs[i] / m) * Math.PI * 2 - Math.PI / 2;
+      const a2 = (onIdxs[(i + 1) % onIdxs.length] / m) * Math.PI * 2 - Math.PI / 2;
+      ctx.beginPath();
+      ctx.moveTo(cx + R * Math.cos(a1), cy + R * Math.sin(a1));
+      ctx.lineTo(cx + R * Math.cos(a2), cy + R * Math.sin(a2));
+      ctx.stroke();
+    }
+
+    const stepInPat = curStep >= 0 ? curStep % m : -1;
+    pat.forEach((v, i) => {
       const angle = (i / m) * Math.PI * 2 - Math.PI / 2;
-      const x = cx + rr * Math.cos(angle), y = cy + rr * Math.sin(angle);
-      if (!started) { ctx.moveTo(x, y); started = true; } else ctx.lineTo(x, y);
+      const isCur = i === stepInPat;
+      let rr = R;
+      if (ci === 1 && v && melody[i]) {
+        const t2 = logMax > logMin ? (Math.log2(melody[i] + 1) - logMin) / (logMax - logMin) : 0.5;
+        rr = R * 0.55 + t2 * (R - R * 0.55);
+      }
+      if (v) {
+        ctx.beginPath(); ctx.arc(cx + rr * Math.cos(angle), cy + rr * Math.sin(angle), isCur ? 11 : 8, 0, Math.PI * 2);
+        ctx.fillStyle = isCur ? curColor : color; ctx.fill();
+      } else {
+        ctx.beginPath(); ctx.arc(cx + R * Math.cos(angle), cy + R * Math.sin(angle), 4, 0, Math.PI * 2);
+        ctx.fillStyle = dark ? '#2c2c2a' : '#e0ddd6'; ctx.fill();
+      }
+      if (m <= 12) {
+        ctx.fillStyle = dark ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.2)';
+        ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(i + 1, cx + (R + 14) * Math.cos(angle), cy + (R + 14) * Math.sin(angle));
+      }
     });
-    ctx.stroke();
-  }
 
-  const ly = H - 12;
-  [['#7F77DD', 'メロディ'], ['#1D9E75', 'ドラム']].forEach(([c, l], i) => {
-    ctx.fillStyle = c; ctx.beginPath(); ctx.arc(W * 0.3 + i * W * 0.25, ly, 5, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = dark ? 'rgba(255,255,255,0.38)' : 'rgba(0,0,0,0.3)';
-    ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    ctx.fillText(l, W * 0.3 + i * W * 0.25 + 8, ly);
+    ctx.fillStyle = dark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.35)';
+    ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(label, cx, H - 10);
   });
+
+  ctx.fillStyle = dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.15)';
+  ctx.font = '12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('vs', W / 2, H / 2);
 }
 
 // ── メイン更新 ───────────────────────────────────────────────
 
 function upd() {
-  const n = +document.getElementById('sl-n').value;
-  const m = +document.getElementById('sl-m').value;
-  const r = Math.min(+document.getElementById('sl-r').value, m - 1);
-  document.getElementById('sl-r').max = m - 1;
-  document.getElementById('sl-r').value = r;
-  ['n', 'm', 'r'].forEach(k => document.getElementById('o-' + k).textContent = document.getElementById('sl-' + k).value);
+  const dn = +document.getElementById('dn').value;
+  const dm = +document.getElementById('dm').value;
+  const dr = Math.min(+document.getElementById('dr').value, dm - 1);
+  document.getElementById('dr').max = dm - 1;
+  document.getElementById('dr').value = dr;
+  document.getElementById('o-dn').textContent = dn;
+  document.getElementById('o-dm').textContent = dm;
+  document.getElementById('o-dr').textContent = dr;
+
+  const mn = +document.getElementById('mn').value;
+  const mm = +document.getElementById('mm').value;
+  const mr = Math.min(+document.getElementById('mr').value, mm - 1);
+  document.getElementById('mr').max = mm - 1;
+  document.getElementById('mr').value = mr;
+  document.getElementById('o-mn').textContent = mn;
+  document.getElementById('o-mm').textContent = mm;
+  document.getElementById('o-mr').textContent = mr;
 
   const sc   = document.getElementById('sel-sc').value;
   const root = +document.getElementById('sel-root').value;
   const mv   = document.getElementById('sel-mv').value;
 
   document.getElementById('mv-desc').textContent = MV_DESC[mv] || '';
-  drumPat = rotate(euclidean(n, m), r);
-  melody  = buildMelody(drumPat, SCALES[sc], root, mv);
 
-  document.getElementById('lbl-r').textContent = `E(${n},${m})`;
-  document.getElementById('lbl-s').textContent = SCALE_NAMES[sc];
+  drumPat = rotate(euclidean(dn, dm), dr);
+  melPat  = rotate(euclidean(mn, mm), mr);
+  melody  = buildMelody(melPat, SCALES[sc], root, mv);
+
+  // LCM（最大64に制限）
+  lcmLen = Math.min(lcm(drumPat.length, melPat.length), 64);
+
+  document.getElementById('lbl-dr').textContent  = `E(${dn},${dm})`;
+  document.getElementById('lbl-ml').textContent  = `E(${mn},${mm})`;
+  document.getElementById('lbl-sc').textContent  = SCALE_NAMES[sc];
 
   renderScaleInfo(sc);
   renderSeq();
@@ -534,8 +557,8 @@ function upd() {
 
 function onBpm() {
   bpm = +document.getElementById('sl-bpm').value;
-  document.getElementById('o-bpm').textContent = bpm;
-  document.getElementById('lbl-b').textContent = bpm;
+  document.getElementById('o-bpm').textContent   = bpm;
+  document.getElementById('lbl-bpm').textContent = bpm;
 }
 
 // ── 再生制御 ─────────────────────────────────────────────────
@@ -543,16 +566,19 @@ function onBpm() {
 function tick() {
   if (!isPlaying) return;
   const ctx = getACtx();
-  const ms = 60000 / bpm / 4;
-  const t = ctx.currentTime;
+  const ms  = 60000 / bpm / 4;
+  const t   = ctx.currentTime;
   const dur = ms / 1000 * 0.88;
-  const m = drumPat.length;
-  curStep = (curStep + 1) % m;
 
-  if (drumPat[curStep]) synthDrum(t);
+  curStep = (curStep + 1) % lcmLen;
+
+  const di = curStep % drumPat.length;
+  const mi = curStep % melPat.length;
+
+  if (drumPat[di]) synthDrum(t);
   const timbre = document.getElementById('sel-t').value;
-  const rev = getRevMix();
-  if (melody[curStep]) playNote(melody[curStep], timbre, t, dur, rev);
+  const rev    = getRevMix();
+  if (melPat[mi] && melody[mi]) playNote(melody[mi], timbre, t, dur, rev);
 
   document.querySelectorAll('.drum-cell').forEach((c, i) => c.classList.toggle('cur', i === curStep));
   document.querySelectorAll('.note-cell').forEach((c, i) => c.classList.toggle('cur', i === curStep));
@@ -576,11 +602,13 @@ function togglePlay() {
 }
 
 function randomize() {
-  const n = Math.floor(Math.random() * 7) + 2;
-  const m = [8, 12, 16][Math.floor(Math.random() * 3)];
-  document.getElementById('sl-n').value = n;
-  document.getElementById('sl-m').value = m;
-  document.getElementById('sl-r').value = Math.floor(Math.random() * m);
+  const ms = [8, 12, 16];
+  document.getElementById('dn').value = Math.floor(Math.random() * 6) + 2;
+  document.getElementById('dm').value = ms[Math.floor(Math.random() * ms.length)];
+  document.getElementById('dr').value = Math.floor(Math.random() * 8);
+  document.getElementById('mn').value = Math.floor(Math.random() * 6) + 2;
+  document.getElementById('mm').value = ms[Math.floor(Math.random() * ms.length)];
+  document.getElementById('mr').value = Math.floor(Math.random() * 8);
   const scs = Object.keys(SCALES);
   document.getElementById('sel-sc').value = scs[Math.floor(Math.random() * scs.length)];
   upd();
@@ -588,17 +616,18 @@ function randomize() {
 
 function applyPreset(i) {
   const p = PRESETS[i];
-  document.getElementById('sl-n').value  = p.n;
-  document.getElementById('sl-m').value  = p.m;
-  document.getElementById('sl-r').value  = p.r;
-  document.getElementById('sel-sc').value = p.sc;
-  document.getElementById('sel-t').value  = p.t;
-  document.getElementById('lbl-t').textContent =
-    document.getElementById('sel-t').options[document.getElementById('sel-t').selectedIndex].text;
+  document.getElementById('dn').value = p.dn;
+  document.getElementById('dm').value = p.dm;
+  document.getElementById('dr').value = p.dr;
+  document.getElementById('mn').value = p.mn;
+  document.getElementById('mm').value = p.mm;
+  document.getElementById('mr').value = p.mr;
+  document.getElementById('sel-sc').value  = p.sc;
+  document.getElementById('sel-t').value   = p.t;
   document.getElementById('sel-mv').value  = p.mv;
   document.getElementById('sl-bpm').value  = p.bpm;
-  document.getElementById('o-bpm').textContent  = p.bpm;
-  document.getElementById('lbl-b').textContent  = p.bpm;
+  document.getElementById('o-bpm').textContent   = p.bpm;
+  document.getElementById('lbl-bpm').textContent = p.bpm;
   bpm = p.bpm;
   upd();
 }
@@ -606,8 +635,7 @@ function applyPreset(i) {
 // ── 初期化 ───────────────────────────────────────────────────
 
 function init() {
-  const presetRow = document.getElementById('preset-row');
-  presetRow.innerHTML = PRESETS.map((p, i) =>
+  document.getElementById('preset-row').innerHTML = PRESETS.map((p, i) =>
     `<button class="tag-btn" onclick="applyPreset(${i})">${p.l}</button>`
   ).join('');
   upd();
