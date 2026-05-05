@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ユークリッドリズム ビジュアライザー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+  <!-- 統計カード -->
+  <div class="stat-grid">
+    <div class="scard"><div class="scard-title">リズム</div><div class="scard-val" id="lbl-r">E(5,8)</div></div>
+    <div class="scard"><div class="scard-title">スケール</div><div class="scard-val" id="lbl-s">ペンタ</div></div>
+    <div class="scard"><div class="scard-title">音色</div><div class="scard-val" id="lbl-t">ピアノ</div></div>
+    <div class="scard"><div class="scard-title">BPM</div><div class="scard-val" id="lbl-b">110</div></div>
+  </div>
+
+  <!-- 円形ビジュアライザー -->
+  <canvas id="cv" height="190"></canvas>
+
+  <!-- プリセット -->
+  <div class="preset-section">
+    <div class="section-label">プリセット</div>
+    <div class="preset-row" id="preset-row"></div>
+  </div>
+
+  <!-- コントロール -->
+  <div class="controls-grid">
+
+    <!-- リズム設定 -->
+    <div>
+      <div class="ctrl-section-label">リズム</div>
+      <div class="row">
+        <label for="sl-n">音符数 n</label>
+        <input type="range" id="sl-n" min="1" max="16" step="1" value="5" oninput="upd()">
+        <span class="val" id="o-n">5</span>
+      </div>
+      <div class="row">
+        <label for="sl-m">拍数 m</label>
+        <input type="range" id="sl-m" min="4" max="32" step="1" value="8" oninput="upd()">
+        <span class="val" id="o-m">8</span>
+      </div>
+      <div class="row">
+        <label for="sl-r">回転</label>
+        <input type="range" id="sl-r" min="0" max="31" step="1" value="0" oninput="upd()">
+        <span class="val" id="o-r">0</span>
+      </div>
+      <div class="row">
+        <label for="sl-bpm">BPM</label>
+        <input type="range" id="sl-bpm" min="40" max="200" step="1" value="110" oninput="onBpm()">
+        <span class="val" id="o-bpm">110</span>
+      </div>
+    </div>
+
+    <!-- 音楽・音色設定 -->
+    <div>
+      <div class="ctrl-section-label">音楽・音色</div>
+
+      <div class="row">
+        <label for="sel-t">音色</label>
+        <select id="sel-t" style="flex:1;"
+          onchange="upd(); document.getElementById('lbl-t').textContent = this.options[this.selectedIndex].text;">
+          <option value="piano">ピアノ</option>
+          <option value="marimba">マリンバ</option>
+          <option value="guitar">ギター</option>
+          <option value="bass">ベース</option>
+          <option value="vibraphone">ビブラフォン</option>
+          <option value="koto">琴</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="sel-sc">スケール</label>
+        <select id="sel-sc" style="flex:1;" onchange="upd()">
+          <option value="penta">ペンタトニック</option>
+          <option value="major">メジャー</option>
+          <option value="minor">マイナー</option>
+          <option value="harmonic_minor">ハーモニックマイナー</option>
+          <option value="dorian">ドリアン</option>
+          <option value="phrygian">フリジアン</option>
+          <option value="blues">ブルース</option>
+          <option value="ryukyu">琉球音階</option>
+          <option value="hirajoshi">平調子</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="sel-root">ルート音</label>
+        <select id="sel-root" style="flex:1;" onchange="upd()">
+          <option value="110">A2</option>
+          <option value="116">A#2 / B♭2</option>
+          <option value="123">B2</option>
+          <option value="130">C3</option>
+          <option value="138">C#3 / D♭3</option>
+          <option value="146">D3</option>
+          <option value="155">D#3 / E♭3</option>
+          <option value="164">E3</option>
+          <option value="174">F3</option>
+          <option value="185">F#3 / G♭3</option>
+          <option value="196">G3</option>
+          <option value="207">G#3 / A♭3</option>
+          <option value="220">A3</option>
+          <option value="233">A#3 / B♭3</option>
+          <option value="246">B3</option>
+          <option value="261" selected>C4</option>
+          <option value="277">C#4 / D♭4</option>
+          <option value="293">D4</option>
+          <option value="311">D#4 / E♭4</option>
+          <option value="329">E4</option>
+          <option value="349">F4</option>
+          <option value="370">F#4 / G♭4</option>
+          <option value="392">G4</option>
+          <option value="415">G#4 / A♭4</option>
+          <option value="440">A4</option>
+          <option value="466">A#4 / B♭4</option>
+          <option value="494">B4</option>
+        </select>
+      </div>
+
+      <div class="row-melody">
+        <label for="sel-mv">メロディ動き</label>
+        <div class="mv-wrap">
+          <select id="sel-mv" style="width:100%;" onchange="upd()">
+            <option value="ascend">上昇（1オクターブ上昇して戻る）</option>
+            <option value="descend">下降（1オクターブ下降して戻る）</option>
+            <option value="pendulum">振り子（上下に揺れる）</option>
+            <option value="arch">山型（中心音から外へ広がる）</option>
+            <option value="stepwise">隣接音（半音階的に動く）</option>
+            <option value="random">ランダム</option>
+            <option value="repeat">繰り返し（同音連打）</option>
+          </select>
+          <div class="mv-desc" id="mv-desc"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="sl-rev">リバーブ</label>
+        <input type="range" id="sl-rev" min="0" max="100" step="1" value="30"
+               oninput="document.getElementById('rev-out').textContent = this.value + '%'">
+        <span class="val" id="rev-out">30%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- シーケンサー -->
+  <div class="seq-section">
+    <div class="section-label">シーケンサー</div>
+    <div id="seq-area"></div>
+  </div>
+
+  <!-- アクションボタン -->
+  <div class="action-row">
+    <button class="act-btn" id="play-btn" onclick="togglePlay()">▶ 再生</button>
+    <button class="act-btn" onclick="randomize()">ランダム</button>
+  </div>
+
+  <!-- スケール説明 -->
+  <div class="scale-info" id="scale-info"></div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
